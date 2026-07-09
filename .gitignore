@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# runtime outputs
+logs/*
+!logs/.gitkeep
+
+allowed_output/*
+!allowed_output/.gitkeep
+
+# never commit real secrets
+secrets/*
+!secrets/.gitkeep
+!secrets/README.md

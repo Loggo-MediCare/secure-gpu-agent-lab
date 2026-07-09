@@ -1,0 +1,3 @@
+Project: Secure GPU Agent Lab
+Goal: Build a safe AI agent that can read allowed files, write reports, and keep audit logs.
+Risk: The agent must not read secrets or send data outside.

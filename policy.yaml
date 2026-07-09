@@ -1,0 +1,15 @@
+allowed_read_paths:
+  - allowed_docs/
+
+blocked_read_paths:
+  - secrets/
+
+allowed_write_paths:
+  - allowed_output/
+  - logs/
+
+network_access: false
+human_approval_required:
+  - write_files
+  - delete_files
+  - network_access
