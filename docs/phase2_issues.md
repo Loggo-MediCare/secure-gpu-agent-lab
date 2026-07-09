@@ -135,3 +135,51 @@ Create one simple demo command that shows the full safety workflow.
 - Running the demo produces clear terminal output.
 - No real external network calls.
 - No real secrets.
+
+---
+
+## Issue 7 — Add Hermes-style session, memory, and skills structure
+
+### Goal
+Make this lab closer to a Hermes-style self-improving enterprise agent without connecting real OpenShell / NemoClaw yet.
+
+This issue is now prioritized because the next learning goal is to build the Hermes-style agent core first:
+- session history
+- memory layer
+- reusable skills
+- curator workflow
+
+OpenShell / NemoClaw integration will remain a later sandbox/runtime milestone.
+
+### Tasks
+- Add `sessions/` for per-run session logs.
+- Add `memory/` with:
+  - `approved_memory.jsonl`
+  - `quarantine_memory.jsonl`
+- Add `skills/` with:
+  - `index.json`
+  - one sample skill
+- Add `agents/memory_store.py`.
+- Add `agents/skill_registry.py`.
+- Add `agents/curator.py`.
+- Update `policy.yaml` so memory writes and skill crystallization require approval.
+- Add tests to verify:
+  - agent cannot read `secrets/`
+  - agent cannot directly write approved memory
+  - agent can write quarantine memory
+  - skills are loaded only by name from `skills/index.json`
+  - curator produces a report without deleting anything
+
+### Acceptance Criteria
+- Existing tests still pass.
+- No real secrets are used.
+- No external network calls are made.
+- The project remains standard-library only.
+
+### Safety
+This issue should not connect real OpenShell, NemoClaw, OpenSSL, GitHub tokens, API keys, or live external services.
+
+### Priority
+High.
+
+Hermes-style session, memory, and skills structure should be built before deeper OpenShell / NemoClaw integration.
