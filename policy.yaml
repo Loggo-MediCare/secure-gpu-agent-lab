@@ -1,15 +1,47 @@
+# Current runtime policy used by the safe agent.
+# These values are intentionally simple and compatible with the existing
+# standard-library parser used by safe_agent.py.
+
 allowed_read_paths:
   - allowed_docs/
 
+# Files under this path are treated as protected and must not be read.
 blocked_read_paths:
   - secrets/
 
+# Only these write targets are permitted for generated reports and logs.
 allowed_write_paths:
   - allowed_output/
   - logs/
 
+# Network access is disabled by default for the current sandbox model.
 network_access: false
+
+# Existing compatibility field for human review requirements.
 human_approval_required:
   - write_files
   - delete_files
   - network_access
+
+# Future-oriented fields for a Hermes/OpenShell/NemoClaw-style sandbox policy.
+# These are documented for planning and will not change current agent behavior.
+allowed_skill_paths:
+  - skills/
+
+allowed_memory_paths:
+  - memory/
+
+quarantine_memory_paths:
+  - memory/quarantine/
+
+# Redact secret-like values before they can be surfaced in output.
+secret_redaction: true
+
+# Default action for any unapproved or unknown operation.
+default_action: deny
+
+# Operations that should require explicit human approval in a future design.
+require_approval_for:
+  - approve_memory
+  - crystallize_skill
+  - access_github
